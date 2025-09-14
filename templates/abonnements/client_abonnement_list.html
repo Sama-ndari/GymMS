@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block title %}Mes Abonnements - GymMS{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h2 class="mb-0">Mes Abonnements</h2>
+</div>
+
+<div class="card">
+    <div class="card-body">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Type</th>
+                    <th>Date début</th>
+                    <th>Date fin</th>
+                    <th>Statut</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for abonnement in abonnements %}
+                <tr>
+                    <td>{{ abonnement.type }}</td>
+                    <td>{{ abonnement.date_debut }}</td>
+                    <td>{{ abonnement.date_fin }}</td>
+                    <td>
+                        <span class="badge bg-{% if abonnement.statut == 'ACTIVE' %}success{% elif abonnement.statut == 'EXPIRED' %}danger{% else %}warning{% endif %}">
+                            {{ abonnement.get_statut_display }}
+                        </span>
+                    </td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="4" class="text-center">Aucun abonnement trouvé.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

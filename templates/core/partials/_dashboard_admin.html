@@ -1,0 +1,56 @@
+<div class="welcome-section mb-4">
+    <h1 class="h2">Tableau de bord Administrateur</h1>
+    <p class="subtitle">Bienvenue {{ request.user.nom }}, gérez l'ensemble du système depuis cet emplacement central.</p>
+</div>
+
+<div class="row g-4">
+    <div class="col-md-6 col-lg-4">
+        <a href="{% url 'user_list' %}" class="dashboard-card h-100">
+            <div class="icon">👥</div>
+            <h3>Gérer les Utilisateurs</h3>
+            <p>Ajouter, modifier ou supprimer des comptes clients et coachs.</p>
+        </a>
+    </div>
+    <div class="col-md-6 col-lg-4">
+        <a href="{% url 'coach_list' %}" class="dashboard-card h-100">
+            <div class="icon">🏋️</div>
+            <h3>Gérer les Coachs</h3>
+            <p>Gérer les profils et les spécialités des coachs.</p>
+        </a>
+    </div>
+    <div class="col-md-6 col-lg-4">
+        <a href="{% url 'abonnement_list' %}" class="dashboard-card h-100">
+            <div class="icon">💳</div>
+            <h3>Gérer les Abonnements</h3>
+            <p>Suivre et administrer les abonnements des clients.</p>
+        </a>
+    </div>
+    <div class="col-md-6 col-lg-4">
+        <a href="{% url 'equipement_list' %}" class="dashboard-card h-100">
+            <div class="icon">🔩</div>
+            <h3>Gérer les Équipements</h3>
+            <p>Administrer l'inventaire des équipements de la salle.</p>
+        </a>
+    </div>
+    <div class="col-md-6 col-lg-4">
+        <a href="{% url 'reservation_list' %}" class="dashboard-card h-100">
+            <div class="icon">📅</div>
+            <h3>Voir les Réservations</h3>
+            <p>Consulter toutes les réservations de sessions.</p>
+        </a>
+    </div>
+    <div class="col-md-6 col-lg-4">
+        <a href="{% url 'admin_progres_list' %}" class="dashboard-card h-100">
+            <div class="icon">📈</div>
+            <h3>Suivi des Progrès</h3>
+            <p>Visualiser les rapports de progrès de tous les clients.</p>
+        </a>
+    </div>
+    <div class="col-md-6 col-lg-4">
+        <a href="{% url 'admin_list' %}" class="dashboard-card h-100">
+            <div class="icon">🛡️</div>
+            <h3>Gérer les Administrateurs</h3>
+            <p>Ajouter et gérer les comptes administrateurs du système.</p>
+        </a>
+    </div>
+</div>

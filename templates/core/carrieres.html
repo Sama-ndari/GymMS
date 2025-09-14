@@ -1,0 +1,140 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Carrières - GymMS{% endblock %}
+
+{% block content %}
+<div class="info-page">
+    <div class="hero-banner">
+        <div class="hero-overlay"></div>
+        <img src="{% static 'images/gym-black-couple-training-01.jpg' %}" alt="Carrières GymMS" class="hero-image">
+        <div class="hero-content">
+            <h1 class="display-3">Carrières</h1>
+            <p class="lead">Rejoignez une équipe passionnée qui transforme l'industrie du fitness</p>
+        </div>
+    </div>
+
+    <div class="container py-5">
+        <div class="row mb-5">
+            <div class="col-lg-8 mx-auto text-center">
+                <h2>Pourquoi Travailler Chez GymMS ?</h2>
+                <p class="lead">Nous créons un environnement où l'innovation, la passion et l'excellence se rencontrent pour révolutionner l'expérience fitness.</p>
+            </div>
+        </div>
+
+        <div class="row mb-5">
+            <div class="col-lg-4 mb-4">
+                <div class="benefit-card">
+                    <div class="benefit-icon">🚀</div>
+                    <h4>Innovation Continue</h4>
+                    <p>Travaillez sur des technologies de pointe et contribuez à façonner l'avenir de l'industrie du fitness.</p>
+                </div>
+            </div>
+            <div class="col-lg-4 mb-4">
+                <div class="benefit-card">
+                    <div class="benefit-icon">🌱</div>
+                    <h4>Croissance Personnelle</h4>
+                    <p>Développez vos compétences avec des formations continues et des opportunités d'évolution.</p>
+                </div>
+            </div>
+            <div class="col-lg-4 mb-4">
+                <div class="benefit-card">
+                    <div class="benefit-icon">🤝</div>
+                    <h4>Équipe Collaborative</h4>
+                    <p>Rejoignez une équipe diverse et talentueuse qui valorise la collaboration et l'entraide.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+                <h3 class="mb-4">Postes Disponibles</h3>
+                
+                <div class="job-listing">
+                    <div class="job-card">
+                        <div class="job-header">
+                            <h4>Développeur Full-Stack Senior</h4>
+                            <span class="job-type">CDI</span>
+                        </div>
+                        <div class="job-details">
+                            <p><i class="fas fa-map-marker-alt"></i> Bujumbura, Burundi (Hybride)</p>
+                            <p><i class="fas fa-clock"></i> Publié il y a 2 jours</p>
+                        </div>
+                        <div class="job-description">
+                            <p>Nous recherchons un développeur expérimenté en Django/React pour rejoindre notre équipe technique et contribuer au développement de nouvelles fonctionnalités.</p>
+                            <div class="job-skills">
+                                <span class="skill-tag">Django</span>
+                                <span class="skill-tag">React</span>
+                                <span class="skill-tag">PostgreSQL</span>
+                                <span class="skill-tag">Docker</span>
+                            </div>
+                        </div>
+                        <div class="job-actions">
+                            <button class="btn btn-primary">Postuler</button>
+                            <button class="btn btn-outline-secondary">En Savoir Plus</button>
+                        </div>
+                    </div>
+
+                    <div class="job-card">
+                        <div class="job-header">
+                            <h4>Designer UX/UI</h4>
+                            <span class="job-type">CDI</span>
+                        </div>
+                        <div class="job-details">
+                            <p><i class="fas fa-map-marker-alt"></i> Remote/Bujumbura</p>
+                            <p><i class="fas fa-clock"></i> Publié il y a 5 jours</p>
+                        </div>
+                        <div class="job-description">
+                            <p>Créez des expériences utilisateur exceptionnelles et des interfaces intuitives pour notre plateforme de gestion sportive.</p>
+                            <div class="job-skills">
+                                <span class="skill-tag">Figma</span>
+                                <span class="skill-tag">Adobe Creative Suite</span>
+                                <span class="skill-tag">Prototyping</span>
+                                <span class="skill-tag">User Research</span>
+                            </div>
+                        </div>
+                        <div class="job-actions">
+                            <button class="btn btn-primary">Postuler</button>
+                            <button class="btn btn-outline-secondary">En Savoir Plus</button>
+                        </div>
+                    </div>
+
+                    <div class="job-card">
+                        <div class="job-header">
+                            <h4>Responsable Marketing Digital</h4>
+                            <span class="job-type">CDI</span>
+                        </div>
+                        <div class="job-details">
+                            <p><i class="fas fa-map-marker-alt"></i> Bujumbura, Burundi</p>
+                            <p><i class="fas fa-clock"></i> Publié il y a 1 semaine</p>
+                        </div>
+                        <div class="job-description">
+                            <p>Développez et exécutez notre stratégie marketing digital pour accélérer notre croissance en Afrique de l'Est.</p>
+                            <div class="job-skills">
+                                <span class="skill-tag">SEO/SEM</span>
+                                <span class="skill-tag">Social Media</span>
+                                <span class="skill-tag">Analytics</span>
+                                <span class="skill-tag">Content Marketing</span>
+                            </div>
+                        </div>
+                        <div class="job-actions">
+                            <button class="btn btn-primary">Postuler</button>
+                            <button class="btn btn-outline-secondary">En Savoir Plus</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="spontaneous-application mt-5">
+                    <div class="card">
+                        <div class="card-body text-center">
+                            <h4>Candidature Spontanée</h4>
+                            <p>Vous ne trouvez pas le poste qui vous correspond ? Envoyez-nous votre candidature spontanée !</p>
+                            <button class="btn btn-outline-primary">Envoyer ma Candidature</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

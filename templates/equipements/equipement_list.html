@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block title %}Gestion des Équipements - GymMS{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h2 class="mb-0">Gestion des Équipements</h2>
+    <a href="{% url 'equipement_create' %}" class="btn btn-primary">Nouvel Équipement</a>
+</div>
+
+<div class="card">
+    <div class="card-body">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Nom</th>
+                    <th>Type</th>
+                    <th>Statut</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for equipement in equipements %}
+                <tr>
+                    <td>{{ equipement.nom }}</td>
+                    <td>{{ equipement.type }}</td>
+                    <td>
+                        <span class="badge bg-{% if equipement.statut == 'AVAILABLE' %}success{% else %}warning{% endif %}">
+                            {{ equipement.get_statut_display }}
+                        </span>
+                    </td>
+                    <td>
+                        <a href="{% url 'equipement_update' equipement.pk %}" class="btn btn-sm btn-warning">Modifier</a>
+                        <a href="{% url 'equipement_delete' equipement.pk %}" class="btn btn-sm btn-danger">Supprimer</a>
+                    </td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="4" class="text-center">Aucun équipement trouvé.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

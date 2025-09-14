@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ title }} - GymMS{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-lg-6">
+        <div class="card">
+            <div class="card-body">
+                <h2 class="card-title">{{ title }}</h2>
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label for="{{ form.nom.id_for_label }}" class="form-label">{{ form.nom.label }}</label>
+                        {{ form.nom }}
+                    </div>
+                    <div class="mb-3">
+                        <label for="{{ form.type.id_for_label }}" class="form-label">{{ form.type.label }}</label>
+                        {{ form.type }}
+                    </div>
+                    <div class="mb-3">
+                        <label for="{{ form.statut.id_for_label }}" class="form-label">{{ form.statut.label }}</label>
+                        {{ form.statut }}
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <a href="{% url 'equipement_list' %}" class="btn btn-secondary">Annuler</a>
+                        <button type="submit" class="btn btn-primary">Enregistrer</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

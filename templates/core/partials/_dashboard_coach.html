@@ -1,0 +1,35 @@
+<div class="welcome-section mb-4">
+    <h1 class="h2">Bienvenue {{ request.user.nom }} !</h1>
+    <p class="subtitle">Gérez vos clients et suivez leurs progrès depuis votre tableau de bord personnalisé.</p>
+</div>
+
+<div class="row g-4">
+    <div class="col-md-6 col-lg-4">
+        <a href="{% url 'coach_abonnement_list' %}" class="dashboard-card h-100">
+            <div class="icon">👥</div>
+            <h3>Mes Clients</h3>
+            <p>Consulter la liste de vos clients et leurs abonnements.</p>
+        </a>
+    </div>
+    <div class="col-md-6 col-lg-4">
+        <a href="{% url 'progres_list' %}" class="dashboard-card h-100">
+            <div class="icon">📈</div>
+            <h3>Suivi des Progrès</h3>
+            <p>Ajouter et suivre les progrès de vos clients.</p>
+        </a>
+    </div>
+    <div class="col-md-6 col-lg-4">
+        <a href="{% url 'coach_reservation_list' %}" class="dashboard-card h-100">
+            <div class="icon">📅</div>
+            <h3>Mon Planning</h3>
+            <p>Voir votre planning de réservations.</p>
+        </a>
+    </div>
+    <div class="col-md-6 col-lg-4">
+        <a href="{% url 'coach_equipement_list' %}" class="dashboard-card h-100">
+            <div class="icon">🔩</div>
+            <h3>Liste des Équipements</h3>
+            <p>Consulter les équipements disponibles.</p>
+        </a>
+    </div>
+</div>

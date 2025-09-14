@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+{% block title %}Gestion des Progrès - Admin{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2>Gestion des Progrès - Vue Admin</h2>
+    </div>
+
+    {% if progres %}
+    <div class="card">
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Client</th>
+                            <th>Coach</th>
+                            <th>Date</th>
+                            <th>Poids (kg)</th>
+                            <th>Mesures</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for progre in progres %}
+                        <tr>
+                            <td>{{ progre.client.nom }}</td>
+                            <td>{{ progre.coach.nom }}</td>
+                            <td>{{ progre.date }}</td>
+                            <td>{{ progre.poids|default:"-" }}</td>
+                            <td>
+                                {% if progre.mesures %}
+                                    {% for key, value in progre.mesures.items %}
+                                        <strong>{{ key|title }}:</strong> {{ value }}
+                                        {% if key == 'masse_grasse' %}%{% else %}cm{% endif %}<br>
+                                    {% endfor %}
+                                {% else %}
+                                    -
+                                {% endif %}
+                            </td>
+                            <td>
+                                <a href="{% url 'progres_delete' progre.pk %}" class="btn btn-sm btn-outline-danger">
+                                    <i class="fas fa-trash"></i> Supprimer
+                                </a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    {% else %}
+    <div class="alert alert-info">
+        <i class="fas fa-info-circle"></i>
+        Aucun suivi de progrès enregistré.
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

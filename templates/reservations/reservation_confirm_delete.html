@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}Supprimer la réservation{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header bg-danger text-white">
+                    <h4 class="mb-0">Confirmer la suppression</h4>
+                </div>
+                <div class="card-body">
+                    <div class="alert alert-warning">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        Êtes-vous sûr de vouloir supprimer cette réservation ?
+                    </div>
+                    
+                    <div class="mb-3">
+                        <strong>Client :</strong> {{ reservation.client.nom }}<br>
+                        <strong>Date :</strong> {{ reservation.date }}<br>
+                        <strong>Heure :</strong> {{ reservation.heure }}<br>
+                        {% if reservation.coach %}
+                        <strong>Coach :</strong> {{ reservation.coach.nom }}<br>
+                        {% endif %}
+                        <strong>Statut :</strong> {{ reservation.get_statut_display }}
+                    </div>
+                    
+                    <form method="post">
+                        {% csrf_token %}
+                        <div class="d-flex justify-content-between">
+                            <a href="{% url 'reservation_list' %}" class="btn btn-secondary">
+                                <i class="fas fa-arrow-left"></i> Annuler
+                            </a>
+                            <button type="submit" class="btn btn-danger">
+                                <i class="fas fa-trash"></i> Supprimer définitivement
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

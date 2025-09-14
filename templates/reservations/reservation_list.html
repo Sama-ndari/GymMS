@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block title %}Gestion des Réservations - GymMS{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h2 class="mb-0">Gestion des Réservations</h2>
+    <a href="{% url 'reservation_create' %}" class="btn btn-primary">Nouvelle Réservation</a>
+</div>
+
+<div class="card">
+    <div class="card-body">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Client</th>
+                    <th>Coach</th>
+                    <th>Date</th>
+                    <th>Heure</th>
+                    <th>Statut</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for reservation in reservations %}
+                <tr>
+                    <td>{{ reservation.client.nom }}</td>
+                    <td>{{ reservation.coach.nom|default:"Non assigné" }}</td>
+                    <td>{{ reservation.date }}</td>
+                    <td>{{ reservation.heure }}</td>
+                    <td>
+                        <span class="badge bg-{% if reservation.statut == 'PLANNED' %}primary{% elif reservation.statut == 'COMPLETED' %}success{% else %}danger{% endif %}">
+                            {{ reservation.get_statut_display }}
+                        </span>
+                    </td>
+                    <td>
+                        <a href="{% url 'reservation_update' reservation.pk %}" class="btn btn-sm btn-warning">Modifier</a>
+                        <a href="{% url 'reservation_delete' reservation.pk %}" class="btn btn-sm btn-danger">Supprimer</a>
+                    </td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="6" class="text-center">Aucune réservation trouvée.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

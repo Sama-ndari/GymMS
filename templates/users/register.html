@@ -1,0 +1,122 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}Inscription - GymMS{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-lg-6">
+        <div class="card">
+            <div class="card-body">
+                <h2 class="card-title text-center mb-4">Créer un compte</h2>
+                <form method="post">
+                    {% csrf_token %}
+                    
+                    {% if form.non_field_errors %}
+                        <div class="alert alert-danger">
+                            {{ form.non_field_errors }}
+                        </div>
+                    {% endif %}
+                    
+                    <div class="mb-3">
+                        {{ form.nom.label_tag }}
+                        {{ form.nom }}
+                        {% if form.nom.errors %}
+                            <div class="text-danger">{{ form.nom.errors }}</div>
+                        {% endif %}
+                    </div>
+                    
+                    <div class="mb-3">
+                        {{ form.email.label_tag }}
+                        {{ form.email }}
+                        {% if form.email.errors %}
+                            <div class="text-danger">{{ form.email.errors }}</div>
+                        {% endif %}
+                    </div>
+                    
+                    <div class="mb-3">
+                        {{ form.role.label_tag }}
+                        {{ form.role }}
+                        {% if form.role.errors %}
+                            <div class="text-danger">{{ form.role.errors }}</div>
+                        {% endif %}
+                    </div>
+                    
+                    <div class="mb-3" id="specialty-field" style="display: none;">
+                        {{ form.specialite.label_tag }}
+                        {{ form.specialite }}
+                        <small class="form-text text-muted">{{ form.specialite.help_text }}</small>
+                        {% if form.specialite.errors %}
+                            <div class="text-danger">{{ form.specialite.errors }}</div>
+                        {% endif %}
+                    </div>
+                    
+                    <div class="mb-3">
+                        {{ form.password.label_tag }}
+                        <div class="input-group">
+                            {{ form.password }}
+                            <button class="btn btn-outline-secondary password-toggle" type="button" onclick="togglePassword('id_password')" aria-label="Afficher/masquer le mot de passe">
+                                <i class="fas fa-eye" id="id_password_icon" style="font-size: 1rem; opacity: 0.7;"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-3">
+                        {{ form.password_confirm.label_tag }}
+                        <div class="input-group">
+                            {{ form.password_confirm }}
+                            <button class="btn btn-outline-secondary password-toggle" type="button" onclick="togglePassword('id_password_confirm')" aria-label="Afficher/masquer le mot de passe">
+                                <i class="fas fa-eye" id="id_password_confirm_icon" style="font-size: 1rem; opacity: 0.7;"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary w-100 mt-3">S'inscrire</button>
+                </form>
+                <div class="text-center mt-3">
+                    <p>Déjà un compte? <a href="{% url 'login' %}">Connectez-vous</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+function togglePassword(fieldId) {
+    const field = document.getElementById(fieldId);
+    const icon = document.getElementById(fieldId + '_icon');
+    
+    if (field.type === 'password') {
+        field.type = 'text';
+        icon.classList.remove('fa-eye');
+        icon.classList.add('fa-eye-slash');
+    } else {
+        field.type = 'password';
+        icon.classList.remove('fa-eye-slash');
+        icon.classList.add('fa-eye');
+    }
+}
+
+// Show/hide specialty field based on role selection
+document.addEventListener('DOMContentLoaded', function() {
+    const roleField = document.getElementById('id_role');
+    const specialtyField = document.getElementById('specialty-field');
+    
+    function toggleSpecialtyField() {
+        if (roleField.value === 'COACH') {
+            specialtyField.style.display = 'block';
+            document.getElementById('id_specialite').required = true;
+        } else {
+            specialtyField.style.display = 'none';
+            document.getElementById('id_specialite').required = false;
+        }
+    }
+    
+    // Initial check
+    toggleSpecialtyField();
+    
+    // Listen for changes
+    roleField.addEventListener('change', toggleSpecialtyField);
+});
+</script>
+{% endblock %}

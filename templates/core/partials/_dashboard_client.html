@@ -1,0 +1,28 @@
+<div class="welcome-section mb-4">
+    <h1 class="h2">Bienvenue {{ request.user.nom }} !</h1>
+    <p class="subtitle">Gérez vos réservations, suivez vos progrès et consultez vos abonnements depuis votre espace personnel.</p>
+</div>
+
+<div class="row g-4">
+    <div class="col-md-6 col-lg-4">
+        <a href="{% url 'client_reservation_list' %}" class="dashboard-card h-100">
+            <div class="icon">📅</div>
+            <h3>Mes Réservations</h3>
+            <p>Créer et gérer vos réservations de sessions.</p>
+        </a>
+    </div>
+    <div class="col-md-6 col-lg-4">
+        <a href="{% url 'client_abonnement_list' %}" class="dashboard-card h-100">
+            <div class="icon">💳</div>
+            <h3>Mon Abonnement</h3>
+            <p>Consulter le statut de votre abonnement.</p>
+        </a>
+    </div>
+    <div class="col-md-6 col-lg-4">
+        <a href="{% url 'client_progres_list' %}" class="dashboard-card h-100">
+            <div class="icon">📈</div>
+            <h3>Mes Progrès</h3>
+            <p>Visualiser vos rapports de progrès.</p>
+        </a>
+    </div>
+</div>

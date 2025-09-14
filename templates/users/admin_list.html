@@ -1,0 +1,175 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Gestion des Administrateurs - GymMS{% endblock %}
+
+{% block content %}
+<div class="container-fluid py-4">
+    <div class="row">
+        <div class="col-12">
+            <div class="card shadow-sm">
+                <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+                    <h4 class="mb-0">
+                        <i class="fas fa-user-shield me-2"></i>
+                        Gestion des Administrateurs
+                    </h4>
+                    <a href="{% url 'admin_create' %}" class="btn btn-light btn-sm">
+                        <i class="fas fa-plus me-1"></i>
+                        Nouvel Administrateur
+                    </a>
+                </div>
+                
+                <div class="card-body">
+                    {% if admins %}
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead class="table-light">
+                                    <tr>
+                                        <th><i class="fas fa-user me-1"></i>Nom</th>
+                                        <th><i class="fas fa-envelope me-1"></i>Email</th>
+                                        <th><i class="fas fa-calendar me-1"></i>Date de création</th>
+                                        <th><i class="fas fa-toggle-on me-1"></i>Statut</th>
+                                        <th><i class="fas fa-cogs me-1"></i>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for admin in admins %}
+                                    <tr>
+                                        <td>
+                                            <div class="d-flex align-items-center">
+                                                <div class="avatar-circle bg-primary text-white me-2">
+                                                    {{ admin.nom|first|upper }}
+                                                </div>
+                                                <strong>{{ admin.nom }}</strong>
+                                                {% if admin.pk == request.user.pk %}
+                                                    <span class="badge bg-info ms-2">Vous</span>
+                                                {% endif %}
+                                                {% if admin.email == 'samandari@gmail.com' %}
+                                                    <span class="badge bg-warning ms-2">
+                                                        <i class="fas fa-crown me-1"></i>Super Admin
+                                                    </span>
+                                                {% endif %}
+                                            </div>
+                                        </td>
+                                        <td>{{ admin.email }}</td>
+                                        <td>{{ admin.date_creation|date:"d/m/Y H:i" }}</td>
+                                        <td>
+                                            {% if admin.is_active %}
+                                                <span class="badge bg-success">
+                                                    <i class="fas fa-check-circle me-1"></i>Actif
+                                                </span>
+                                            {% else %}
+                                                <span class="badge bg-danger">
+                                                    <i class="fas fa-times-circle me-1"></i>Inactif
+                                                </span>
+                                            {% endif %}
+                                        </td>
+                                        <td>
+                                            <div class="btn-group" role="group">
+                                                <a href="{% url 'admin_update' admin.pk %}" 
+                                                   class="btn btn-outline-primary btn-sm" 
+                                                   title="Modifier">
+                                                    <i class="fas fa-edit"></i>
+                                                </a>
+                                                
+                                                {% if admin.pk != request.user.pk %}
+                                                    {% if admin.email == 'samandari@gmail.com' %}
+                                                        <button class="btn btn-outline-secondary btn-sm" 
+                                                                title="Super administrateur protégé" 
+                                                                disabled>
+                                                            <i class="fas fa-shield-alt"></i>
+                                                        </button>
+                                                        <button class="btn btn-outline-secondary btn-sm" 
+                                                                title="Super administrateur protégé" 
+                                                                disabled>
+                                                            <i class="fas fa-shield-alt"></i>
+                                                        </button>
+                                                    {% else %}
+                                                        <a href="{% url 'admin_toggle_status' admin.pk %}" 
+                                                           class="btn btn-outline-{% if admin.is_active %}warning{% else %}success{% endif %} btn-sm"
+                                                           title="{% if admin.is_active %}Désactiver{% else %}Activer{% endif %}"
+                                                           onclick="return confirm('Êtes-vous sûr de vouloir {% if admin.is_active %}désactiver{% else %}activer{% endif %} cet administrateur ?')">
+                                                            <i class="fas fa-{% if admin.is_active %}pause{% else %}play{% endif %}"></i>
+                                                        </a>
+                                                        
+                                                        <a href="{% url 'admin_delete' admin.pk %}" 
+                                                           class="btn btn-outline-danger btn-sm" 
+                                                           title="Supprimer">
+                                                            <i class="fas fa-trash"></i>
+                                                        </a>
+                                                    {% endif %}
+                                                {% else %}
+                                                    <button class="btn btn-outline-secondary btn-sm" 
+                                                            title="Vous ne pouvez pas modifier votre propre statut" 
+                                                            disabled>
+                                                        <i class="fas fa-lock"></i>
+                                                    </button>
+                                                {% endif %}
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                        <div class="mt-3">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <small class="text-muted">
+                                        <i class="fas fa-info-circle me-1"></i>
+                                        Total: {{ admins.count }} administrateur{{ admins.count|pluralize }}
+                                    </small>
+                                </div>
+                                <div class="col-md-6 text-end">
+                                    <small class="text-muted">
+                                        <i class="fas fa-shield-alt me-1"></i>
+                                        Tous les administrateurs ont les mêmes privilèges
+                                    </small>
+                                </div>
+                            </div>
+                        </div>
+                    {% else %}
+                        <div class="text-center py-5">
+                            <i class="fas fa-user-shield fa-3x text-muted mb-3"></i>
+                            <h5 class="text-muted">Aucun administrateur trouvé</h5>
+                            <p class="text-muted">Créez le premier administrateur pour commencer.</p>
+                            <a href="{% url 'admin_create' %}" class="btn btn-primary">
+                                <i class="fas fa-plus me-1"></i>
+                                Créer un Administrateur
+                            </a>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+.avatar-circle {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.table th {
+    border-top: none;
+    font-weight: 600;
+    color: #495057;
+}
+
+.btn-group .btn {
+    margin-right: 2px;
+}
+
+.btn-group .btn:last-child {
+    margin-right: 0;
+}
+</style>
+{% endblock %}

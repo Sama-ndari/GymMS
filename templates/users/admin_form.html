@@ -1,0 +1,176 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ title }} - GymMS{% endblock %}
+
+{% block content %}
+<div class="container-fluid py-4">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card shadow-sm">
+                <div class="card-header bg-primary text-white">
+                    <h4 class="mb-0">
+                        <i class="fas fa-user-shield me-2"></i>
+                        {{ title }}
+                    </h4>
+                </div>
+                
+                <div class="card-body">
+                    <form method="post" novalidate>
+                        {% csrf_token %}
+                        
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="nom" class="form-label">
+                                        <i class="fas fa-user me-1"></i>
+                                        Nom complet <span class="text-danger">*</span>
+                                    </label>
+                                    <input type="text" 
+                                           class="form-control" 
+                                           id="nom" 
+                                           name="nom" 
+                                           value="{% if admin %}{{ admin.nom }}{% endif %}"
+                                           required>
+                                    <div class="form-text">Le nom complet de l'administrateur</div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="email" class="form-label">
+                                        <i class="fas fa-envelope me-1"></i>
+                                        Adresse email <span class="text-danger">*</span>
+                                        {% if admin.email == 'samandari@gmail.com' %}
+                                            <i class="fas fa-lock text-warning ms-1" title="Email protégé"></i>
+                                        {% endif %}
+                                    </label>
+                                    <input type="email" 
+                                           class="form-control" 
+                                           id="email" 
+                                           name="email" 
+                                           value="{% if admin %}{{ admin.email }}{% endif %}"
+                                           {% if admin.email == 'samandari@gmail.com' %}readonly{% endif %}
+                                           required>
+                                    <div class="form-text">
+                                        {% if admin.email == 'samandari@gmail.com' %}
+                                            <i class="fas fa-shield-alt text-warning me-1"></i>
+                                            L'email du super administrateur ne peut pas être modifié pour des raisons de sécurité
+                                        {% else %}
+                                            Adresse email unique pour la connexion
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="password" class="form-label">
+                                        <i class="fas fa-lock me-1"></i>
+                                        Mot de passe {% if not admin %}<span class="text-danger">*</span>{% endif %}
+                                    </label>
+                                    <input type="password" 
+                                           class="form-control" 
+                                           id="password" 
+                                           name="password"
+                                           {% if not admin %}required{% endif %}>
+                                    <div class="form-text">
+                                        {% if admin %}
+                                            Laissez vide pour conserver le mot de passe actuel
+                                        {% else %}
+                                            Minimum 6 caractères recommandés
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="confirm_password" class="form-label">
+                                        <i class="fas fa-lock me-1"></i>
+                                        Confirmer le mot de passe {% if not admin %}<span class="text-danger">*</span>{% endif %}
+                                    </label>
+                                    <input type="password" 
+                                           class="form-control" 
+                                           id="confirm_password" 
+                                           name="confirm_password"
+                                           {% if not admin %}required{% endif %}>
+                                    <div class="form-text">Répétez le mot de passe pour confirmation</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="mb-3">
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input" 
+                                               type="checkbox" 
+                                               id="is_active" 
+                                               name="is_active"
+                                               {% if not admin or admin.is_active %}checked{% endif %}>
+                                        <label class="form-check-label" for="is_active">
+                                            <i class="fas fa-toggle-on me-1"></i>
+                                            Compte actif
+                                        </label>
+                                        <div class="form-text">
+                                            Un administrateur inactif ne peut pas se connecter au système
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="alert alert-info">
+                            <i class="fas fa-info-circle me-2"></i>
+                            <strong>Privilèges d'administrateur :</strong>
+                            <ul class="mb-0 mt-2">
+                                <li>Gestion complète des utilisateurs (clients et coachs)</li>
+                                <li>Gestion des équipements et abonnements</li>
+                                <li>Accès à toutes les statistiques et rapports</li>
+                                <li>Gestion des autres administrateurs</li>
+                                <li>Configuration système</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="d-flex justify-content-between">
+                            <a href="{% url 'admin_list' %}" class="btn btn-secondary">
+                                <i class="fas fa-arrow-left me-1"></i>
+                                Retour
+                            </a>
+                            
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-save me-1"></i>
+                                {% if admin %}Mettre à jour{% else %}Créer l'administrateur{% endif %}
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Password confirmation validation
+    const password = document.getElementById('password');
+    const confirmPassword = document.getElementById('confirm_password');
+    
+    function validatePasswords() {
+        if (password.value && confirmPassword.value) {
+            if (password.value !== confirmPassword.value) {
+                confirmPassword.setCustomValidity('Les mots de passe ne correspondent pas');
+            } else {
+                confirmPassword.setCustomValidity('');
+            }
+        }
+    }
+    
+    password.addEventListener('input', validatePasswords);
+    confirmPassword.addEventListener('input', validatePasswords);
+});
+</script>
+{% endblock %}

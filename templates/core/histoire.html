@@ -1,0 +1,97 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Notre Histoire - GymMS{% endblock %}
+
+{% block content %}
+<div class="info-page">
+    <div class="hero-banner">
+        <div class="hero-overlay"></div>
+        <img src="{% static 'images/histoire.jpg' %}" alt="Histoire GymMS" class="hero-image">
+        <div class="hero-content">
+            <h1 class="display-3">Notre Histoire</h1>
+            <p class="lead">Découvrez comment GymMS est devenu le leader de la gestion sportive moderne</p>
+        </div>
+    </div>
+
+    <div class="container py-5">
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-year">2020</div>
+                        <div class="timeline-content">
+                            <h3>Les Débuts</h3>
+                            <p>Fondé par une équipe passionnée de fitness et de technologie, GymMS naît de la vision de révolutionner la gestion des salles de sport. Nous avons identifié les défis quotidiens auxquels font face les propriétaires de salles de sport.</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-year">2021</div>
+                        <div class="timeline-content">
+                            <h3>Premier Prototype</h3>
+                            <p>Développement de notre première version avec les fonctionnalités essentielles : gestion des membres, réservations et suivi des équipements. Tests avec 5 salles de sport partenaires au Burundi.</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-year">2022</div>
+                        <div class="timeline-content">
+                            <h3>Expansion Régionale</h3>
+                            <p>Lancement officiel en Afrique de l'Est avec plus de 50 salles de sport utilisant notre système. Introduction des fonctionnalités avancées de reporting et d'analyse des performances.</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-year">2023</div>
+                        <div class="timeline-content">
+                            <h3>Innovation Technologique</h3>
+                            <p>Intégration de l'intelligence artificielle pour l'optimisation des plannings et la prédiction des tendances. Lancement de l'application mobile pour les membres.</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-year">2024</div>
+                        <div class="timeline-content">
+                            <h3>Reconnaissance Internationale</h3>
+                            <p>GymMS remporte le prix "Meilleure Innovation Fitness" et étend ses services à plus de 200 établissements sportifs à travers l'Afrique.</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item active">
+                        <div class="timeline-year">2025</div>
+                        <div class="timeline-content">
+                            <h3>L'Avenir Commence Maintenant</h3>
+                            <p>Avec notre nouvelle interface révolutionnaire et nos fonctionnalités IA avancées, nous continuons à transformer l'industrie du fitness. Plus de 500 salles de sport nous font confiance.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mt-5">
+            <div class="col-lg-4">
+                <div class="stat-card">
+                    <div class="stat-icon">🏆</div>
+                    <div class="stat-number">500+</div>
+                    <div class="stat-label">Salles Partenaires</div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="stat-card">
+                    <div class="stat-icon">👥</div>
+                    <div class="stat-number">50K+</div>
+                    <div class="stat-label">Membres Actifs</div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="stat-card">
+                    <div class="stat-icon">🌍</div>
+                    <div class="stat-number">15</div>
+                    <div class="stat-label">Pays Couverts</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

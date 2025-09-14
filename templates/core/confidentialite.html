@@ -1,0 +1,243 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Politique de Confidentialité - GymMS{% endblock %}
+
+{% block content %}
+<div class="info-page privacy-page">
+    <div class="hero-banner privacy-hero">
+        <div class="hero-overlay privacy-overlay"></div>
+        <div class="privacy-pattern"></div>
+        <div class="hero-content">
+            <div class="privacy-icon">
+                <i class="fas fa-shield-alt"></i>
+            </div>
+            <h1 class="display-3">Politique de Confidentialité</h1>
+            <p class="lead">Votre vie privée est notre priorité absolue</p>
+            <div class="trust-indicators">
+                <span class="trust-badge"><i class="fas fa-lock"></i> Chiffrement SSL</span>
+                <span class="trust-badge"><i class="fas fa-shield-check"></i> RGPD Compliant</span>
+                <span class="trust-badge"><i class="fas fa-certificate"></i> Certifié Sécurisé</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="container py-5">
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+                <div class="privacy-content">
+                    <div class="last-updated">
+                        <p><strong>Dernière mise à jour :</strong> <span id="current-date"></span></p>
+                    </div>
+
+                    <div class="privacy-section">
+                        <h3>1. Introduction</h3>
+                        <p>GymMS s'engage à protéger la vie privée de ses utilisateurs. Cette politique de confidentialité explique comment nous collectons, utilisons, stockons et protégeons vos informations personnelles lorsque vous utilisez notre plateforme de gestion sportive.</p>
+                    </div>
+
+                    <div class="privacy-section">
+                        <h3>2. Informations que Nous Collectons</h3>
+                        <h4>2.1 Informations Personnelles</h4>
+                        <ul>
+                            <li>Nom et prénom</li>
+                            <li>Adresse e-mail</li>
+                            <li>Numéro de téléphone</li>
+                            <li>Date de naissance</li>
+                            <li>Informations de paiement (cryptées)</li>
+                        </ul>
+                        
+                        <h4>2.2 Données d'Utilisation</h4>
+                        <ul>
+                            <li>Historique des séances d'entraînement</li>
+                            <li>Préférences d'activités</li>
+                            <li>Données de performance</li>
+                            <li>Logs de connexion</li>
+                        </ul>
+                    </div>
+
+                    <div class="privacy-section">
+                        <h3>3. Comment Nous Utilisons Vos Informations</h3>
+                        <ul>
+                            <li><strong>Gestion de compte :</strong> Création et maintenance de votre profil utilisateur</li>
+                            <li><strong>Services personnalisés :</strong> Recommandations d'entraînement adaptées</li>
+                            <li><strong>Communication :</strong> Notifications importantes et mises à jour</li>
+                            <li><strong>Amélioration du service :</strong> Analyse des performances et optimisation</li>
+                            <li><strong>Sécurité :</strong> Prévention de la fraude et protection des données</li>
+                        </ul>
+                    </div>
+
+                    <div class="privacy-section">
+                        <h3>4. Partage des Informations</h3>
+                        <p>Nous ne vendons jamais vos données personnelles. Nous pouvons partager vos informations uniquement dans les cas suivants :</p>
+                        <ul>
+                            <li>Avec votre consentement explicite</li>
+                            <li>Pour se conformer aux obligations légales</li>
+                            <li>Avec nos partenaires de confiance (sous contrat de confidentialité)</li>
+                            <li>En cas de fusion ou acquisition (avec notification préalable)</li>
+                        </ul>
+                    </div>
+
+                    <div class="privacy-section security-section">
+                        <h3><i class="fas fa-shield-alt"></i> Sécurité des Données</h3>
+                        <div class="security-intro">
+                            <p>Nous mettons en œuvre les mesures de sécurité les plus avancées pour protéger vos données personnelles.</p>
+                        </div>
+                        <div class="security-measures">
+                            <div class="security-item enhanced">
+                                <div class="security-icon">
+                                    <i class="fas fa-shield-alt"></i>
+                                </div>
+                                <div class="security-content">
+                                    <h5>Chiffrement SSL/TLS</h5>
+                                    <p>Toutes les communications sont chiffrées avec les derniers protocoles de sécurité</p>
+                                    <div class="security-level">
+                                        <span class="level-indicator level-high">Niveau Maximum</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="security-item enhanced">
+                                <div class="security-icon">
+                                    <i class="fas fa-lock"></i>
+                                </div>
+                                <div class="security-content">
+                                    <h5>Authentification Multi-Facteurs</h5>
+                                    <p>Protection renforcée des comptes avec double vérification</p>
+                                    <div class="security-level">
+                                        <span class="level-indicator level-high">Niveau Maximum</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="security-item enhanced">
+                                <div class="security-icon">
+                                    <i class="fas fa-server"></i>
+                                </div>
+                                <div class="security-content">
+                                    <h5>Serveurs Sécurisés</h5>
+                                    <p>Infrastructure protégée et surveillée 24/7 par nos experts</p>
+                                    <div class="security-level">
+                                        <span class="level-indicator level-high">Niveau Maximum</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="security-item enhanced">
+                                <div class="security-icon">
+                                    <i class="fas fa-database"></i>
+                                </div>
+                                <div class="security-content">
+                                    <h5>Sauvegarde Automatique</h5>
+                                    <p>Vos données sont sauvegardées automatiquement et de manière sécurisée</p>
+                                    <div class="security-level">
+                                        <span class="level-indicator level-high">Niveau Maximum</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="privacy-section rights-section">
+                        <h3><i class="fas fa-user-shield"></i> Vos Droits</h3>
+                        <p class="rights-intro">Conformément au RGPD et aux lois locales, vous disposez de droits étendus sur vos données personnelles :</p>
+                        <div class="rights-grid enhanced-grid">
+                            <div class="right-item enhanced-right">
+                                <div class="right-icon">
+                                    <i class="fas fa-eye"></i>
+                                </div>
+                                <div class="right-content">
+                                    <h5>Droit d'Accès</h5>
+                                    <p>Consulter toutes vos données personnelles</p>
+                                    <button class="right-action">Demander l'accès</button>
+                                </div>
+                            </div>
+                            <div class="right-item enhanced-right">
+                                <div class="right-icon">
+                                    <i class="fas fa-edit"></i>
+                                </div>
+                                <div class="right-content">
+                                    <h5>Droit de Rectification</h5>
+                                    <p>Corriger ou mettre à jour vos informations</p>
+                                    <button class="right-action">Modifier mes données</button>
+                                </div>
+                            </div>
+                            <div class="right-item enhanced-right">
+                                <div class="right-icon">
+                                    <i class="fas fa-trash"></i>
+                                </div>
+                                <div class="right-content">
+                                    <h5>Droit à l'Effacement</h5>
+                                    <p>Demander la suppression de vos données</p>
+                                    <button class="right-action">Supprimer mes données</button>
+                                </div>
+                            </div>
+                            <div class="right-item enhanced-right">
+                                <div class="right-icon">
+                                    <i class="fas fa-download"></i>
+                                </div>
+                                <div class="right-content">
+                                    <h5>Droit à la Portabilité</h5>
+                                    <p>Exporter vos données dans un format lisible</p>
+                                    <button class="right-action">Télécharger mes données</button>
+                                </div>
+                            </div>
+                            <div class="right-item enhanced-right">
+                                <div class="right-icon">
+                                    <i class="fas fa-ban"></i>
+                                </div>
+                                <div class="right-content">
+                                    <h5>Droit d'Opposition</h5>
+                                    <p>Vous opposer au traitement de vos données</p>
+                                    <button class="right-action">M'opposer au traitement</button>
+                                </div>
+                            </div>
+                            <div class="right-item enhanced-right">
+                                <div class="right-icon">
+                                    <i class="fas fa-pause"></i>
+                                </div>
+                                <div class="right-content">
+                                    <h5>Droit à la Limitation</h5>
+                                    <p>Limiter le traitement de vos données</p>
+                                    <button class="right-action">Limiter le traitement</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="privacy-section">
+                        <h3>7. Cookies et Technologies Similaires</h3>
+                        <p>Nous utilisons des cookies pour améliorer votre expérience :</p>
+                        <ul>
+                            <li><strong>Cookies essentiels :</strong> Nécessaires au fonctionnement du site</li>
+                            <li><strong>Cookies de performance :</strong> Analyse de l'utilisation</li>
+                            <li><strong>Cookies de préférence :</strong> Mémorisation de vos choix</li>
+                        </ul>
+                    </div>
+
+                    <div class="privacy-section">
+                        <h3>8. Conservation des Données</h3>
+                        <p>Nous conservons vos données personnelles aussi longtemps que nécessaire pour :</p>
+                        <ul>
+                            <li>Fournir nos services</li>
+                            <li>Respecter nos obligations légales</li>
+                            <li>Résoudre les litiges</li>
+                        </ul>
+                        <p>Les données inactives sont automatiquement supprimées après 3 ans.</p>
+                    </div>
+
+                    <div class="privacy-section">
+                        <h3>9. Contact</h3>
+                        <p>Pour toute question concernant cette politique de confidentialité ou vos données personnelles, contactez-nous :</p>
+                        <div class="contact-info">
+                            <p><i class="fas fa-envelope"></i> <a href="mailto:privacy@gymms.com">privacy@gymms.com</a></p>
+                            <p><i class="fas fa-phone"></i> <a href="https://wa.me/25777568903">+257 77 568 903</a></p>
+                            <p><i class="fas fa-map-marker-alt"></i> 23 Rue 02, Nyakabiga II, Bujumbura, Burundi</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+document.getElementById('current-date').textContent = new Date().toLocaleDateString('fr-FR');
+</script>
+{% endblock %}

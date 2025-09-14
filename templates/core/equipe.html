@@ -1,0 +1,152 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Notre Équipe - GymMS{% endblock %}
+
+{% block content %}
+<div class="info-page">
+    <div class="hero-banner">
+        <div class="hero-overlay"></div>
+        <img src="{% static 'images/founders.jpg' %}" alt="Équipe GymMS" class="hero-image">
+        <div class="hero-content">
+            <h1 class="display-3">Notre Équipe</h1>
+            <p class="lead">Rencontrez les experts passionnés qui révolutionnent la gestion sportive</p>
+        </div>
+    </div>
+
+    <div class="container py-5">
+        <div class="row mb-5">
+            <div class="col-lg-8 mx-auto text-center">
+                <h2>Une équipe d'experts dédiés</h2>
+                <p class="lead">Notre équipe multidisciplinaire combine expertise technique, passion du sport et vision innovante pour créer des solutions qui transforment votre expérience fitness.</p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-4 mb-4">
+                <div class="team-card">
+                    <div class="team-image">
+                        <img src="{% static 'images/team-ceo.jpg' %}" alt="CEO">
+                        <div class="team-overlay">
+                            <div class="social-links">
+                                <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                                <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="team-info">
+                        <h4>Samandari</h4>
+                        <p class="team-role">CEO & Fondateur</p>
+                        <p class="team-description">Visionnaire passionné avec 10 ans d'expérience dans l'industrie du fitness et de la technologie. Expert en transformation digitale.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4 mb-4">
+                <div class="team-card">
+                    <div class="team-image">
+                        <img src="{% static 'images/team-cto.jpg' %}" alt="CTO">
+                        <div class="team-overlay">
+                            <div class="social-links">
+                                <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                                <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="team-info">
+                        <h4>Joy Nish</h4>
+                        <p class="team-role">CTO & Co-fondatrice</p>
+                        <p class="team-description">Architecte logiciel senior spécialisée en IA et machine learning. Diplômée MIT, elle dirige notre innovation technologique.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4 mb-4">
+                <div class="team-card">
+                    <div class="team-image">
+                        <img src="{% static 'images/team-product.jpg' %}" alt="Head of Product">
+                        <div class="team-overlay">
+                            <div class="social-links">
+                                <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                                <a href="#" class="social-link"><i class="fab fa-dribbble"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="team-info">
+                        <h4>Jordy Aleck</h4>
+                        <p class="team-role">Head of Product</p>
+                        <p class="team-description">Designer UX/UI primé et expert en expérience utilisateur. Il s'assure que chaque interaction avec GymMS soit intuitive et agréable.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4 mb-4">
+                <div class="team-card">
+                    <div class="team-image">
+                        <img src="{% static 'images/team-marketing.jpg' %}" alt="Head of Sales">
+                        <div class="team-overlay">
+                            <div class="social-links">
+                                <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                                <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="team-info">
+                        <h4>Tracy Irakoze</h4>
+                        <p class="team-role">Head of Sales</p>
+                        <p class="team-description">Experte en développement commercial avec une passion pour le fitness. Elle accompagne nos partenaires dans leur transformation digitale.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4 mb-4">
+                <div class="team-card">
+                    <div class="team-image">
+                        <img src="{% static 'images/team-ceo1.jpg' %}" alt="Lead Developer">
+                        <div class="team-overlay">
+                            <div class="social-links">
+                                <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                                <a href="#" class="social-link"><i class="fab fa-stackoverflow"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="team-info">
+                        <h4>StarK Muco</h4>
+                        <p class="team-role">Lead Developer</p>
+                        <p class="team-description">Développeur full-stack expert en Django et React. Il dirige notre équipe de développement avec plus de 8 ans d'expérience.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4 mb-4">
+                <div class="team-card">
+                    <div class="team-image">
+                        <img src="{% static 'images/team-cto1.jpg' %}" alt="Customer Success">
+                        <div class="team-overlay">
+                            <div class="social-links">
+                                <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                                <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="team-info">
+                        <h4>Aisha Uwimana</h4>
+                        <p class="team-role">Customer Success Manager</p>
+                        <p class="team-description">Spécialiste en relation client et formation. Elle s'assure que nos partenaires tirent le maximum de valeur de notre plateforme.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mt-5">
+            <div class="col-lg-8 mx-auto text-center">
+                <div class="cta-section">
+                    <h3>Rejoignez Notre Mission</h3>
+                    <p>Nous recherchons constamment des talents passionnés pour rejoindre notre équipe en croissance.</p>
+                    <a href="{% url 'carrieres' %}" class="btn btn-primary btn-lg">Voir Nos Offres</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

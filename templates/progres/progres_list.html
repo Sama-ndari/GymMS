@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block title %}Suivi des Progrès - GymMS{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h2 class="mb-0">Suivi des Progrès</h2>
+    <a href="{% url 'progres_create' %}" class="btn btn-primary">Nouveau Suivi</a>
+</div>
+
+<div class="card">
+    <div class="card-body">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Client</th>
+                    <th>Date</th>
+                    <th>Poids</th>
+                    <th>Notes</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for progres in progres %}
+                <tr>
+                    <td>{{ progres.client.nom }}</td>
+                    <td>{{ progres.date }}</td>
+                    <td>{{ progres.poids|default:"N/A" }} kg</td>
+                    <td>{{ progres.notes|truncatewords:10 }}</td>
+                    <td>
+                        <a href="{% url 'progres_update' progres.pk %}" class="btn btn-sm btn-warning">Modifier</a>
+                        <a href="{% url 'progres_delete' progres.pk %}" class="btn btn-sm btn-danger">Supprimer</a>
+                    </td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="5" class="text-center">Aucun suivi de progrès trouvé.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

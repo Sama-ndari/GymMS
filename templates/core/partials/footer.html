@@ -1,0 +1,86 @@
+<footer class="footer">
+    <div class="footer-wave"></div>
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <div class="brand-logo">
+                    <span class="brand-icon">💪</span>
+                    <h3 class="brand-name">GymMS</h3>
+                </div>
+                <p class="brand-description">Transformez votre salle de sport avec notre système de gestion moderne. Une solution complète pour optimiser vos opérations et améliorer l'expérience de vos membres.</p>
+                <div class="social-links">
+                    <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-links">
+                <div class="footer-section">
+                    <h5 class="section-title"><i class="fas fa-compass"></i> Navigation</h5>
+                    <ul class="footer-list">
+                        <li><a href="{% url 'dashboard' %}"><i class="fas fa-tachometer-alt"></i> Tableau de bord</a></li>
+                        <li><a href="{% url 'user_list' %}"><i class="fas fa-users"></i> Membres</a></li>
+                        <li><a href="{% url 'coach_list' %}"><i class="fas fa-user-tie"></i> Coachs</a></li>
+                        <li><a href="{% url 'equipement_list' %}"><i class="fas fa-dumbbell"></i> Équipements</a></li>
+                        <li><a href="{% url 'abonnement_list' %}"><i class="fas fa-credit-card"></i> Abonnements</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h5 class="section-title"><i class="fas fa-cogs"></i> Services</h5>
+                    <ul class="footer-list">
+                        <li><a href="{% url 'reservation_list' %}"><i class="fas fa-calendar-check"></i> Réservations</a></li>
+                        <li><a href="{% url 'progres_list' %}"><i class="fas fa-chart-line"></i> Suivi des progrès</a></li>
+                        <li><a href="{% url 'abonnement_list' %}"><i class="fas fa-money-bill-wave"></i> Gestion des paiements</a></li>
+                        <li><a href="{% url 'dashboard' %}"><i class="fas fa-file-chart-pie"></i> Rapports</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h5 class="section-title"><i class="fas fa-info-circle"></i> À propos</h5>
+                    <ul class="footer-list">
+                        <li><a href="{% url 'histoire' %}"><i class="fas fa-history"></i> Notre histoire</a></li>
+                        <li><a href="{% url 'equipe' %}"><i class="fas fa-users-cog"></i> Équipe</a></li>
+                        <li><a href="{% url 'carrieres' %}"><i class="fas fa-briefcase"></i> Carrières</a></li>
+                        <li><a href="{% url 'confidentialite' %}"><i class="fas fa-shield-alt"></i> Confidentialité</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-contact">
+                <h5 class="section-title"><i class="fas fa-phone-alt"></i> Contact</h5>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <a href="mailto:contact@gymms.com">contact@gymms.com</a>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <a href="https://wa.me/25777568903" target="_blank">+257 77 568 903</a>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>23 Rue 02, Nyakabiga II<br>Bujumbura, Burundi</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-clock"></i>
+                        <span>Lun-Ven: 6h-22h<br>Sam-Dim: 8h-20h</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <div class="footer-bottom-content">
+                <p class="copyright">&copy; <span id="current-year">2025</span> <span class="highlight">GymMS</span> - Système de Gestion Sportive. Tous droits réservés.</p>
+                <div class="footer-badges">
+                    <span class="badge"><i class="fas fa-shield-check"></i> Sécurisé</span>
+                    <span class="badge"><i class="fas fa-mobile-alt"></i> Responsive</span>
+                    <span class="badge"><i class="fas fa-rocket"></i> Moderne</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
