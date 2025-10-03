@@ -13,4 +13,5 @@ urlpatterns = [
     
     # Client routes
     path('mes-abonnements/', views.client_abonnement_list_view, name='client_abonnement_list'),
+    path('mes-abonnements/create/', views.client_abonnement_create_view, name='client_abonnement_create'),
 ]

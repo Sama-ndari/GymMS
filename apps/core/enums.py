@@ -44,3 +44,8 @@ class ReservationStatus(models.TextChoices):
     PLANNED = 'PLANIFIEE', 'Planifiée'
     COMPLETED = 'TERMINEE', 'Terminée'
     CANCELLED = 'ANNULEE', 'Annulée'
+
+class AssignmentStatus(models.TextChoices):
+    PENDING = 'PENDING', 'En attente'
+    APPROVED = 'APPROVED', 'Approuvé'
+    REJECTED = 'REJECTED', 'Refusé'

@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title %}Retirer un Client - GymMS{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="card border-danger">
+        <div class="card-header bg-danger text-white">
+            <h4 class="mb-0"><i class="fas fa-exclamation-triangle"></i> Confirmer le retrait</h4>
+        </div>
+        <div class="card-body">
+            <p class="lead">Êtes-vous sûr de vouloir retirer le client suivant?</p>
+            <div class="alert alert-warning">
+                <strong>Coach:</strong> {{ assignment.coach.nom }}<br>
+                <strong>Client:</strong> {{ assignment.client.nom }}
+            </div>
+            <form method="post">
+                {% csrf_token %}
+                <div class="d-flex gap-2">
+                    <button type="submit" class="btn btn-danger">
+                        <i class="fas fa-check"></i> Oui, retirer ce client
+                    </button>
+                    <a href="{% url 'coach_clients' %}" class="btn btn-secondary">
+                        <i class="fas fa-times"></i> Annuler
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

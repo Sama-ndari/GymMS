@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block title %}Annuler la demande - GymMS{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="card border-danger shadow-sm">
+        <div class="card-header bg-danger text-white">
+            <h4 class="mb-0"><i class="fas fa-exclamation-triangle"></i> Annuler la demande</h4>
+        </div>
+        <div class="card-body">
+            <p class="lead">Êtes-vous sûr de vouloir annuler votre demande?</p>
+            <div class="alert alert-warning">
+                <strong>Coach:</strong> {{ assignment.coach.nom }}<br>
+                <strong>Spécialité:</strong> {{ assignment.coach.specialite }}
+            </div>
+            <p>Vous pourrez toujours renvoyer une demande plus tard.</p>
+            <form method="post">
+                {% csrf_token %}
+                <div class="d-flex gap-2">
+                    <button type="submit" class="btn btn-danger">
+                        <i class="fas fa-check"></i> Oui, annuler ma demande
+                    </button>
+                    <a href="{% url 'client_my_coaches' %}" class="btn btn-secondary">
+                        <i class="fas fa-times"></i> Non, retour
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

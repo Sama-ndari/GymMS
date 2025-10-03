@@ -4,21 +4,28 @@
 </div>
 
 <div class="row g-4">
-    <div class="col-md-6 col-lg-4">
+    <div class="col-md-6 col-lg-3">
+        <a href="{% url 'client_my_coaches' %}" class="dashboard-card h-100">
+            <div class="icon">👨‍🏫</div>
+            <h3>Mes Coachs</h3>
+            <p>Demander et gérer vos coachs personnels.</p>
+        </a>
+    </div>
+    <div class="col-md-6 col-lg-3">
         <a href="{% url 'client_reservation_list' %}" class="dashboard-card h-100">
             <div class="icon">📅</div>
             <h3>Mes Réservations</h3>
             <p>Créer et gérer vos réservations de sessions.</p>
         </a>
     </div>
-    <div class="col-md-6 col-lg-4">
+    <div class="col-md-6 col-lg-3">
         <a href="{% url 'client_abonnement_list' %}" class="dashboard-card h-100">
             <div class="icon">💳</div>
             <h3>Mon Abonnement</h3>
             <p>Consulter le statut de votre abonnement.</p>
         </a>
     </div>
-    <div class="col-md-6 col-lg-4">
+    <div class="col-md-6 col-lg-3">
         <a href="{% url 'client_progres_list' %}" class="dashboard-card h-100">
             <div class="icon">📈</div>
             <h3>Mes Progrès</h3>

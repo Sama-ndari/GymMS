@@ -143,93 +143,23 @@ python manage.py migrate
 python manage.py loaddata sample_data.json
 ```
 
-## 🗄️ Database Setup with Dump File
+## 🔄 Reset and Load Default Data
 
-### Quick Start with Pre-populated Database
+For a clean and consistent testing environment, use the provided script to reset your database and populate it with a complete set of default data. This is the recommended way to get started.
 
-This repository includes a `gym_db.sql` file containing a complete database snapshot with sample data. This ensures you have the **same starting data** as the original developer, including pre-configured users, coaches, and equipment.
+### 1. Run the Data Loader Script
 
-### 1. Create Empty Database
-
-**Linux/macOS & Windows:**
-```sql
--- Login to MySQL as root
-mysql -u root -p
-
--- Create database with proper charset
-CREATE DATABASE gym_db CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
-EXIT;
-```
-
-### 2. Import Database Dump
-
-**Linux/macOS:**
-```bash
-mysql -u <your_mysql_user> -p gym_db < gym_db.sql
-```
-
-**Windows (Command Prompt):**
-```cmd
-mysql -u <your_mysql_user> -p gym_db < gym_db.sql
-```
-
-**Windows (PowerShell):**
-```powershell
-Get-Content gym_db.sql | mysql -u <your_mysql_user> -p gym_db
-```
-
-**📝 Notes:**
-- Replace `<your_mysql_user>` with your actual MySQL username (e.g., `root` or `samandari`)
-- You'll be prompted to enter your MySQL password
-- The import process may take a few moments depending on the database size
-
-### 3. Update Environment Variables
-
-Update your `.env` file to match the dump database:
-
-```env
-# Django Configuration
-SECRET_KEY=your-super-secret-key-here-change-this-in-production
-DEBUG=True
-
-# Database Configuration (Updated for dump file)
-DB_NAME=gym_db
-DB_USER=<your_mysql_user>
-DB_PASSWORD=<your_mysql_password>
-DB_HOST=localhost
-DB_PORT=3306
-```
-
-### 4. Run Migrations
-
-After importing the dump, ensure all migrations are applied:
+This script will first ask for confirmation, then **delete all existing data**, and finally create a fresh set of test accounts and records.
 
 ```bash
-python manage.py migrate
+# Make sure your virtual environment is active
+source .venv/bin/activate
+
+# Run the script
+python load_default_data.py
 ```
 
-### 5. Verify Import Success
-
-You can verify the import was successful by checking the tables:
-
-```sql
--- Login to MySQL
-mysql -u <your_mysql_user> -p gym_db
-
--- Show all tables
-SHOW TABLES;
-
--- Check sample data (optional)
-SELECT COUNT(*) FROM auth_user;
-EXIT;
-```
-
-**✅ Benefits of using the dump file:**
-- Pre-configured admin account and sample users
-- Sample coaches, equipment, and membership data
-- Consistent development environment
-- Skip manual data entry for testing
-
+Follow the prompt by typing `yes` to confirm the database reset.
 ## 🏃‍♂️ Running the Application
 
 ### 1. Create Superuser
@@ -263,50 +193,40 @@ The application will be available at:
 2. Use the superuser credentials to access the admin panel
 3. Start managing your gym operations!
 
-## 🔐 System Credentials
+## 🧪 Default Testing Accounts
 
-The system comes with pre-configured test accounts for immediate testing and development:
+After running the `load_default_data.py` script, the following accounts will be available for testing:
 
 ### Administrator Accounts
 
-#### Super Administrator (Protected)
-- **Name**: Samandari
-- **Email**: samandari@gmail.com
-- **Password**: sam1234
-- **Role**: Super Admin (Full system access, cannot be modified/deleted)
-
-#### Regular Administrator
-- **Name**: GrandBB
-- **Email**: gdbb@gmail.com
-- **Password**: gdbb123
-- **Role**: Admin (Full system access)
+| Name      | Email                 | Password | Role        |
+|-----------|-----------------------|----------|-------------|
+| Samandari | samandari@gmail.com   | `sam123`  | Super Admin |
+| GrandBB   | gdbb@gmail.com        | `gdbb123`  | Admin       |
 
 ### Coach Accounts
 
-| Name | Email | Password | Specialty |
-|------|-------|----------|-----------|
-| Marie Dubois | marie.dubois@gymms.com | marie123 | Cardio et Endurance |
-| Pierre Martin | pierre.martin@gymms.com | pierre123 | Yoga et Pilates |
-| Sophie Laurent | sophie.laurent@gymms.com | sophie123 | CrossFit et HIIT |
-| Thomas Bernard | thomas.bernard@gymms.com | thomas123 | Préparation physique |
+| Name           | Email                     | Password    | Specialty              |
+|----------------|---------------------------|-------------|------------------------|
+| Marie Dubois   | marie.dubois@gymms.com    | `marie123`  | Cardio et Endurance    |
+| Pierre Martin  | pierre.martin@gymms.com   | `pierre123` | Yoga et Pilates        |
+| Sophie Laurent | sophie.laurent@gymms.com  | `sophie123` | CrossFit et HIIT       |
+| Thomas Bernard | thomas.bernard@gymms.com  | `thomas123` | Préparation physique   |
 
 ### Client Accounts
 
-| Name | Email | Password |
-|------|-------|----------|
-| Jean Dupont | jean.dupont@email.com | jean123 |
-| Alice Martin | alice.martin@email.com | alice123 |
-| Bob Wilson | bob.wilson@email.com | bob123 |
-| Emma Garcia | emma.garcia@email.com | emma123 |
+| Name         | Email                  | Password   |
+|--------------|------------------------|------------|
+| Jean Dupont  | jean.dupont@email.com  | `jean123`  |
+| Alice Martin | alice.martin@email.com | `alice123` |
+| Bob Wilson   | bob.wilson@email.com   | `bob123`   |
+| Emma Garcia  | emma.garcia@email.com  | `emma123`  |
 
-### Usage Notes
-- **Super Admin Account**: Samandari has ultimate system control and protection from modification/deletion
-- **Regular Admin Account**: GrandBB has full admin privileges but can be managed by other admins
-- **Coach Accounts**: Test coach-specific features like session management and client tracking
-- **Client Accounts**: Test member registration, booking, and profile management
-- **Security**: These are test credentials - change them in production environments
-- **Activation**: All accounts are pre-activated and ready to use
-- **Admin Hierarchy**: Only Samandari can modify his own account; other admins can manage each other
+### Notes on Default Data
+- **Activation**: All accounts are created as **active** and ready for immediate login.
+- **Assignments**: Sample coach-client assignments are pre-approved.
+- **Subscriptions**: Clients have a mix of active and expired subscriptions for testing.
+- **Security**: These are weak passwords for testing only. **Do not use them in production.**
 
 ## 📝 Important Notes
 

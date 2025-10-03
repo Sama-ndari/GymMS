@@ -3,7 +3,7 @@ from django.contrib import messages
 from functools import wraps
 
 from .models import Abonnement
-from .forms import AbonnementForm
+from .forms import AbonnementForm, ClientAbonnementForm
 from apps.users.views import admin_required
 from core.enums import UserRole
 
@@ -76,3 +76,21 @@ def client_required(view_func):
 def client_abonnement_list_view(request):
     abonnements = Abonnement.objects.filter(client=request.user)
     return render(request, 'abonnements/client_abonnement_list.html', {'abonnements': abonnements})
+
+@client_required
+def client_abonnement_create_view(request):
+    """Allow clients to create their own subscriptions"""
+    if request.method == 'POST':
+        form = ClientAbonnementForm(request.POST)
+        if form.is_valid():
+            abonnement = form.save(commit=False)
+            abonnement.client = request.user  # Set client to current user
+            abonnement.save()
+            messages.success(request, "Votre abonnement a été créé avec succès.")
+            return redirect('client_abonnement_list')
+        else:
+            messages.error(request, "Veuillez corriger les erreurs dans le formulaire.")
+    else:
+        form = ClientAbonnementForm()
+    
+    return render(request, 'abonnements/client_abonnement_form.html', {'form': form, 'title': 'Créer un abonnement'})

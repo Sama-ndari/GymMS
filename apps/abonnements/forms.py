@@ -25,3 +25,21 @@ class AbonnementForm(forms.ModelForm):
             'date_fin': 'Date de fin',
             'statut': 'Statut',
         }
+
+class ClientAbonnementForm(forms.ModelForm):
+    """Form for clients to create their own subscriptions (no client field)"""
+    class Meta:
+        model = Abonnement
+        fields = ['type', 'date_debut', 'date_fin', 'statut']
+        widgets = {
+            'type': forms.Select(attrs={'class': 'form-select'}, choices=SubscriptionType.choices),
+            'date_debut': forms.DateInput(attrs={'class': 'form-control', 'type': 'date'}),
+            'date_fin': forms.DateInput(attrs={'class': 'form-control', 'type': 'date'}),
+            'statut': forms.Select(attrs={'class': 'form-select'}),
+        }
+        labels = {
+            'type': 'Type d\'abonnement',
+            'date_debut': 'Date de début',
+            'date_fin': 'Date de fin',
+            'statut': 'Statut',
+        }

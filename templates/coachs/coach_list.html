@@ -4,50 +4,73 @@
 
 {% block content %}
 <div class="d-flex justify-content-between align-items-center mb-4">
-    <h2 class="mb-0">Coachs</h2>
-    <a href="{% url 'coach_create' %}" class="btn btn-primary">Ajouter un coach</a>
+  <h2 class="mb-0">Coachs</h2>
+  <div>
+    <a href="{% url 'coach_clients' %}" class="btn btn-info me-2">
+      <i class="fas fa-users-cog"></i> Assignations Coach-Client
+    </a>
+    <a href="{% url 'coach_create' %}" class="btn btn-primary">
+      <i class="fas fa-plus"></i> Ajouter un coach
+    </a>
+  </div>
 </div>
 
 <div class="card">
-    <div class="card-body">
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th>Nom</th>
-                    <th>Email</th>
-                    <th>Spécialité</th>
-                    <th>Statut</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for data in coach_data %}
-                <tr>
-                    <td>{{ data.coach.nom }}</td>
-                    <td>{{ data.coach.email }}</td>
-                    <td>{{ data.coach.get_specialite_display }}</td>
-                    <td>
-                        {% if data.is_active %}
-                            <span class="badge bg-success">Actif</span>
-                        {% else %}
-                            <span class="badge bg-warning">Inactif</span>
-                        {% endif %}
-                    </td>
-                    <td>
-                        {% if data.user %}
-                            {% if data.is_active %}
-                                <a href="{% url 'coach_activate' data.coach.pk %}" class="btn btn-sm btn-warning" title="Désactiver">Désactiver</a>
-                            {% else %}
-                                <a href="{% url 'coach_activate' data.coach.pk %}" class="btn btn-sm btn-success" title="Activer">Activer</a>
-                            {% endif %}
-                        {% endif %}
-                        <a href="{% url 'coach_update' data.coach.pk %}" class="btn btn-sm btn-primary">Modifier</a>
-                        <a href="{% url 'coach_delete' data.coach.pk %}" class="btn btn-sm btn-danger">Supprimer</a>
-                    </td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-    </div>
+  <div class="card-body">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Nom</th>
+          <th>Email</th>
+          <th>Spécialité</th>
+          <th>Statut</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for data in coach_data %}
+        <tr>
+          <td>{{ data.coach.nom }}</td>
+          <td>{{ data.coach.email }}</td>
+          <td>{{ data.coach.get_specialite_display }}</td>
+          <td>
+            {% if data.is_active %}
+            <span class="badge bg-success">Actif</span>
+            {% else %}
+            <span class="badge bg-warning">Inactif</span>
+            {% endif %}
+          </td>
+          <td>
+            {% if data.user %} {% if data.is_active %}
+            <a
+              href="{% url 'coach_activate' data.coach.pk %}"
+              class="btn btn-sm btn-warning"
+              title="Désactiver"
+              >Désactiver</a
+            >
+            {% else %}
+            <a
+              href="{% url 'coach_activate' data.coach.pk %}"
+              class="btn btn-sm btn-success"
+              title="Activer"
+              >Activer</a
+            >
+            {% endif %} {% endif %}
+            <a
+              href="{% url 'coach_update' data.coach.pk %}"
+              class="btn btn-sm btn-primary"
+              >Modifier</a
+            >
+            <a
+              href="{% url 'coach_delete' data.coach.pk %}"
+              class="btn btn-sm btn-danger"
+              >Supprimer</a
+            >
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
 </div>
 {% endblock %}

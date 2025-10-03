@@ -1,0 +1,346 @@
+================================================================================
+GymMS DATABASE EXPORT
+Generated: 2025-10-03 09:10:33
+================================================================================
+
+
+================================================================================
+USERS
+================================================================================
+
+Total Users: 10
+
+ID: 27
+Name: GrandBB
+Email: gdbb@gmail.com
+Role: ADMIN
+Active: True
+Created: 2025-09-14 10:06:30.870863+00:00
+----------------------------------------
+ID: 1
+Name: Samandari
+Email: samandari@gmail.com
+Role: ADMIN
+Active: True
+Created: 2025-09-05 08:34:03.587057+00:00
+----------------------------------------
+ID: 12
+Name: Alice Martin
+Email: alice.martin@email.com
+Role: CLIENT
+Active: True
+Created: 2025-09-07 07:47:41.910059+00:00
+----------------------------------------
+ID: 13
+Name: Bob Wilson
+Email: bob.wilson@email.com
+Role: CLIENT
+Active: True
+Created: 2025-09-07 07:47:42.841761+00:00
+----------------------------------------
+ID: 14
+Name: Emma Garcia
+Email: emma.garcia@email.com
+Role: CLIENT
+Active: True
+Created: 2025-09-07 07:47:44.076394+00:00
+----------------------------------------
+ID: 28
+Name: Jean Dupont
+Email: jean.dupont@email.com
+Role: CLIENT
+Active: True
+Created: 2025-10-02 09:28:32.262887+00:00
+----------------------------------------
+ID: 16
+Name: Marie Dubois
+Email: marie.dubois@gymms.com
+Role: COACH
+Active: True
+Created: 2025-09-07 08:57:37.491775+00:00
+----------------------------------------
+ID: 17
+Name: Pierre Martin
+Email: pierre.martin@gymms.com
+Role: COACH
+Active: True
+Created: 2025-09-07 08:57:38.486990+00:00
+----------------------------------------
+ID: 18
+Name: Sophie Laurent
+Email: sophie.laurent@gymms.com
+Role: COACH
+Active: True
+Created: 2025-09-07 08:57:39.395026+00:00
+----------------------------------------
+ID: 19
+Name: Thomas Bernard
+Email: thomas.bernard@gymms.com
+Role: COACH
+Active: True
+Created: 2025-09-07 08:57:40.272021+00:00
+----------------------------------------
+
+================================================================================
+COACHES
+================================================================================
+
+Total Coaches: 4
+
+ID: 9
+Name: Marie Dubois
+Email: marie.dubois@gymms.com
+Specialty: Cardio et Endurance
+Created: 2025-09-07 08:57:15.366832+00:00
+----------------------------------------
+ID: 10
+Name: Pierre Martin
+Email: pierre.martin@gymms.com
+Specialty: Yoga et Pilates
+Created: 2025-09-07 08:57:15.379836+00:00
+----------------------------------------
+ID: 11
+Name: Sophie Laurent
+Email: sophie.laurent@gymms.com
+Specialty: CrossFit et HIIT
+Created: 2025-09-07 08:57:15.412732+00:00
+----------------------------------------
+ID: 12
+Name: Thomas Bernard
+Email: thomas.bernard@gymms.com
+Specialty: Préparation physique
+Created: 2025-09-07 08:57:15.421524+00:00
+----------------------------------------
+
+================================================================================
+COACH-CLIENT ASSIGNMENTS
+================================================================================
+
+Total Assignments: 5
+
+ID: 2
+Coach: Marie Dubois (Cardio et Endurance)
+Client: Alice Martin
+Status: Approuvé
+Active: True
+Assigned: 2025-10-03 06:14:00.358209+00:00
+----------------------------------------
+ID: 1
+Coach: Marie Dubois (Cardio et Endurance)
+Client: Jean Dupont
+Status: Approuvé
+Active: True
+Assigned: 2025-10-03 06:14:00.341618+00:00
+----------------------------------------
+ID: 3
+Coach: Pierre Martin (Yoga et Pilates)
+Client: Bob Wilson
+Status: Approuvé
+Active: True
+Assigned: 2025-10-03 06:32:16.475864+00:00
+----------------------------------------
+ID: 4
+Coach: Sophie Laurent (CrossFit et HIIT)
+Client: Emma Garcia
+Status: Approuvé
+Active: True
+Assigned: 2025-10-03 06:32:16.508782+00:00
+----------------------------------------
+ID: 5
+Coach: Thomas Bernard (Préparation physique)
+Client: Jean Dupont
+Status: Approuvé
+Active: True
+Assigned: 2025-10-03 07:05:03.112455+00:00
+----------------------------------------
+
+================================================================================
+SUBSCRIPTIONS (ABONNEMENTS)
+================================================================================
+
+Total Subscriptions: 4
+
+ID: 7
+Client: Jean Dupont
+Type: Mensuel Standard
+Status: Actif
+Start Date: 2025-10-03
+End Date: 2025-10-24
+----------------------------------------
+ID: 5
+Client: Emma Garcia
+Type: Hebdomadaire
+Status: Actif
+Start Date: 2025-09-12
+End Date: 2025-09-19
+----------------------------------------
+ID: 3
+Client: Alice Martin
+Type: Trimestriel
+Status: Actif
+Start Date: 2025-08-08
+End Date: 2025-11-06
+----------------------------------------
+ID: 4
+Client: Bob Wilson
+Type: Mensuel Standard
+Status: Expiré
+Start Date: 2025-07-24
+End Date: 2025-08-23
+----------------------------------------
+
+================================================================================
+RESERVATIONS
+================================================================================
+
+Total Reservations: 3
+
+ID: 14
+Client: Jean Dupont
+Coach: Marie Dubois
+Date: 2025-10-06
+Time: 12:00:00
+Status: Planifiée
+----------------------------------------
+ID: 6
+Client: Bob Wilson
+Coach: Pierre Martin
+Date: 2025-09-19
+Time: 08:30:00
+Status: Planifiée
+----------------------------------------
+ID: 8
+Client: Alice Martin
+Coach: Marie Dubois
+Date: 2025-09-09
+Time: 12:00:00
+Status: Planifiée
+----------------------------------------
+
+================================================================================
+PROGRESS TRACKING (PROGRÈS)
+================================================================================
+
+Total Progress Entries: 3
+
+ID: 13
+Client: Bob Wilson
+Coach: Pierre Martin
+Date: 2025-10-03
+Weight: 78.50 kg
+Measurements: {'poitrine': 98, 'taille': 85, 'hanches': 95, 'bras_gauche': 35, 'bras_droit': 35, 'cuisse_gauche': 55, 'cuisse_droite': 55, 'mollet_gauche': 36, 'mollet_droit': 36, 'masse_grasse': 16.0}
+Notes: Bon début! Focus sur la flexibilité avec le yoga.
+----------------------------------------
+ID: 12
+Client: Alice Martin
+Coach: Marie Dubois
+Date: 2025-09-28
+Weight: 62.30 kg
+Measurements: {'poitrine': 88, 'taille': 68, 'hanches': 92, 'bras_gauche': 28, 'bras_droit': 28, 'cuisse_gauche': 52, 'cuisse_droite': 52, 'mollet_gauche': 34, 'mollet_droit': 34, 'masse_grasse': 22.0}
+Notes: Bonne progression en cardio. Continuez les exercices de renforcement musculaire.
+----------------------------------------
+ID: 11
+Client: Jean Dupont
+Coach: Marie Dubois
+Date: 2025-09-26
+Weight: 85.50 kg
+Measurements: {'poitrine': 105, 'taille': 90, 'hanches': 98, 'bras_gauche': 38, 'bras_droit': 38, 'cuisse_gauche': 58, 'cuisse_droite': 58, 'mollet_gauche': 38, 'mollet_droit': 38, 'masse_grasse': 18.5}
+Notes: Excellent progrès ! Continue comme ça. Poids en baisse, muscles en hausse.
+----------------------------------------
+
+================================================================================
+EQUIPMENT (ÉQUIPEMENTS)
+================================================================================
+
+Total Equipment: 10
+
+ID: 10
+Name: Corde à sauter
+Type: Accessoires
+Status: Disponible
+Coach: None
+Created: 2025-09-07 07:38:58.725566+00:00
+----------------------------------------
+ID: 9
+Name: Kettlebell 16kg
+Type: Accessoires
+Status: Disponible
+Coach: None
+Created: 2025-09-07 07:38:58.402916+00:00
+----------------------------------------
+ID: 3
+Name: Rameur Concept2
+Type: Cardio
+Status: En maintenance
+Coach: None
+Created: 2025-09-07 07:38:57.764352+00:00
+----------------------------------------
+ID: 1
+Name: Tapis de course
+Type: Cardio
+Status: Disponible
+Coach: None
+Created: 2025-09-07 07:38:57.687782+00:00
+----------------------------------------
+ID: 2
+Name: Vélo stationnaire
+Type: Cardio
+Status: Disponible
+Coach: None
+Created: 2025-09-07 07:38:57.710644+00:00
+----------------------------------------
+ID: 8
+Name: Poulie vis-à-vis
+Type: Musculation guidée
+Status: Disponible
+Coach: None
+Created: 2025-09-07 07:38:58.160251+00:00
+----------------------------------------
+ID: 7
+Name: Presse à cuisses
+Type: Musculation guidée
+Status: Disponible
+Coach: None
+Created: 2025-09-07 07:38:58.109676+00:00
+----------------------------------------
+ID: 4
+Name: Banc plat
+Type: Poids libres
+Status: Disponible
+Coach: None
+Created: 2025-09-07 07:38:57.789980+00:00
+----------------------------------------
+ID: 6
+Name: Barre olympique
+Type: Poids libres
+Status: Disponible
+Coach: None
+Created: 2025-09-07 07:38:58.022420+00:00
+----------------------------------------
+ID: 5
+Name: Haltères 10kg
+Type: Poids libres
+Status: Disponible
+Coach: None
+Created: 2025-09-07 07:38:57.888170+00:00
+----------------------------------------
+
+================================================================================
+SUMMARY
+================================================================================
+
+Total Users: 10
+  - Admins: 2
+  - Coaches: 4
+  - Clients: 4
+Total Coach Records: 4
+Total Assignments: 5
+  - Approved: 5
+  - Pending: 0
+  - Rejected: 0
+Total Subscriptions: 4
+Total Reservations: 3
+Total Progress Entries: 3
+Total Equipment: 10
+
+================================================================================

@@ -91,6 +91,16 @@ def client_reservation_list_view(request):
 def client_reservation_create_view(request):
     if request.method == 'POST':
         form = ClientReservationForm(request.POST)
+        # Filter coaches to only show approved assignments
+        from apps.coachs.models import Coach, CoachClient
+        from apps.core.enums import AssignmentStatus
+        approved_coach_ids = CoachClient.objects.filter(
+            client=request.user,
+            actif=True,
+            statut=AssignmentStatus.APPROVED
+        ).values_list('coach_id', flat=True)
+        form.fields['coach'].queryset = Coach.objects.filter(id__in=approved_coach_ids)
+        
         if form.is_valid():
             reservation = form.save(commit=False)
             reservation.client = request.user
@@ -99,6 +109,16 @@ def client_reservation_create_view(request):
             return redirect('client_reservation_list')
     else:
         form = ClientReservationForm()
+        # Filter coaches to only show approved assignments
+        from apps.coachs.models import Coach, CoachClient
+        from apps.core.enums import AssignmentStatus
+        approved_coach_ids = CoachClient.objects.filter(
+            client=request.user,
+            actif=True,
+            statut=AssignmentStatus.APPROVED
+        ).values_list('coach_id', flat=True)
+        form.fields['coach'].queryset = Coach.objects.filter(id__in=approved_coach_ids)
+    
     return render(request, 'reservations/client_reservation_form.html', {'form': form, 'title': 'Nouvelle réservation'})
 
 @client_required
@@ -115,12 +135,32 @@ def client_reservation_update_view(request, pk):
     
     if request.method == 'POST':
         form = ClientReservationForm(request.POST, instance=reservation)
+        # Filter coaches to only show approved assignments
+        from apps.coachs.models import Coach, CoachClient
+        from apps.core.enums import AssignmentStatus
+        approved_coach_ids = CoachClient.objects.filter(
+            client=request.user,
+            actif=True,
+            statut=AssignmentStatus.APPROVED
+        ).values_list('coach_id', flat=True)
+        form.fields['coach'].queryset = Coach.objects.filter(id__in=approved_coach_ids)
+        
         if form.is_valid():
             form.save()
             messages.success(request, "Votre réservation a été modifiée avec succès.")
             return redirect('client_reservation_list')
     else:
         form = ClientReservationForm(instance=reservation)
+        # Filter coaches to only show approved assignments
+        from apps.coachs.models import Coach, CoachClient
+        from apps.core.enums import AssignmentStatus
+        approved_coach_ids = CoachClient.objects.filter(
+            client=request.user,
+            actif=True,
+            statut=AssignmentStatus.APPROVED
+        ).values_list('coach_id', flat=True)
+        form.fields['coach'].queryset = Coach.objects.filter(id__in=approved_coach_ids)
+    
     return render(request, 'reservations/client_reservation_form.html', {'form': form, 'title': 'Modifier ma réservation'})
 
 @client_required

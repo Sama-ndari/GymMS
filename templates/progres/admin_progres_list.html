@@ -41,6 +41,9 @@
                                 {% endif %}
                             </td>
                             <td>
+                                <a href="{% url 'admin_progres_detail' progre.pk %}" class="btn btn-sm btn-info me-1">
+                                    <i class="fas fa-eye"></i> Détails
+                                </a>
                                 <a href="{% url 'progres_delete' progre.pk %}" class="btn btn-sm btn-outline-danger">
                                     <i class="fas fa-trash"></i> Supprimer
                                 </a>

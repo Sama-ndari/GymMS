@@ -1,0 +1,142 @@
+{% extends 'base.html' %}
+
+{% block title %}Mes Coachs - GymMS{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+            <h2><i class="fas fa-user-friends"></i> Mes Coachs</h2>
+            <p class="text-muted mb-0">Demandez à être assigné à un coach</p>
+        </div>
+    </div>
+
+    <!-- Approved Coaches -->
+    {% if approved_coaches %}
+    <div class="card mb-4 shadow-sm border-0">
+        <div class="card-header text-white" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+            <h5 class="mb-0"><i class="fas fa-check-circle"></i> Mes Coachs Approuvés</h5>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                {% for assignment in approved_coaches %}
+                <div class="col-md-6 mb-3">
+                    <div class="card h-100 border">
+                        <div class="card-body">
+                            <div class="d-flex align-items-center mb-2">
+                                <div class="bg-success bg-opacity-10 rounded-circle p-3 me-3">
+                                    <i class="fas fa-user-tie fa-2x text-success"></i>
+                                </div>
+                                <div>
+                                    <h5 class="mb-0">{{ assignment.coach.nom }}</h5>
+                                    <small class="text-muted">
+                                        <i class="fas fa-dumbbell"></i> {{ assignment.coach.specialite }}
+                                    </small>
+                                </div>
+                            </div>
+                            <p class="mb-2">
+                                <i class="fas fa-envelope text-muted"></i> {{ assignment.coach.email }}
+                            </p>
+                            <p class="mb-0 text-muted small">
+                                <i class="fas fa-calendar"></i> Assigné le {{ assignment.date_assignation|date:"d/m/Y" }}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
+    <!-- Pending Requests -->
+    {% if pending_requests %}
+    <div class="card mb-4 shadow-sm border-warning">
+        <div class="card-header bg-warning text-dark">
+            <h5 class="mb-0"><i class="fas fa-clock"></i> Demandes en attente</h5>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                {% for assignment in pending_requests %}
+                <div class="col-md-6 mb-3">
+                    <div class="card h-100 border-warning">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-start">
+                                <div class="d-flex align-items-center mb-2">
+                                    <div class="bg-warning bg-opacity-10 rounded-circle p-3 me-3">
+                                        <i class="fas fa-user-tie fa-2x text-warning"></i>
+                                    </div>
+                                    <div>
+                                        <h5 class="mb-0">{{ assignment.coach.nom }}</h5>
+                                        <small class="text-muted">
+                                            <i class="fas fa-dumbbell"></i> {{ assignment.coach.specialite }}
+                                        </small>
+                                    </div>
+                                </div>
+                                <span class="badge bg-warning">En attente</span>
+                            </div>
+                            <p class="mb-2 text-muted small">
+                                <i class="fas fa-calendar"></i> Demandé le {{ assignment.date_assignation|date:"d/m/Y" }}
+                            </p>
+                            <a href="{% url 'client_cancel_request' assignment.pk %}" class="btn btn-sm btn-outline-danger">
+                                <i class="fas fa-times"></i> Annuler la demande
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
+    <!-- Available Coaches -->
+    {% if available_coaches %}
+    <div class="card shadow-sm border-0">
+        <div class="card-header bg-primary text-white">
+            <h5 class="mb-0"><i class="fas fa-plus-circle"></i> Coachs Disponibles</h5>
+        </div>
+        <div class="card-body">
+            <p class="text-muted">Sélectionnez un coach pour envoyer une demande d'assignation</p>
+            <div class="row">
+                {% for coach in available_coaches %}
+                <div class="col-md-4 mb-3">
+                    <div class="card h-100 border">
+                        <div class="card-body text-center">
+                            <div class="bg-primary bg-opacity-10 rounded-circle p-3 mx-auto mb-3" style="width: fit-content;">
+                                <i class="fas fa-user-tie fa-3x text-primary"></i>
+                            </div>
+                            <h5>{{ coach.nom }}</h5>
+                            <p class="text-muted mb-3">
+                                <i class="fas fa-dumbbell"></i> {{ coach.specialite }}
+                            </p>
+                            <a href="{% url 'client_request_coach' coach.pk %}" class="btn btn-primary btn-sm">
+                                <i class="fas fa-paper-plane"></i> Envoyer une demande
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    {% else %}
+    {% if not approved_coaches and not pending_requests %}
+    <div class="alert alert-info">
+        <i class="fas fa-info-circle"></i>
+        Aucun coach disponible pour le moment.
+    </div>
+    {% endif %}
+    {% endif %}
+</div>
+
+<style>
+    .card {
+        transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 0.3rem 0.8rem rgba(0, 0, 0, 0.15) !important;
+    }
+</style>
+{% endblock %}

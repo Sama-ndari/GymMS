@@ -9,7 +9,7 @@ urlpatterns = [
     path('profile-edit/', views.profile_edit_view, name='profile_edit'),
     
     # Client management (Admin-only views)
-    path('', views.user_list_view, name='user_list'),
+    path('users/', views.user_list_view, name='user_list'),
     path('create/', views.user_create_view, name='user_create'),
     path('<int:pk>/update/', views.user_update_view, name='user_update'),
     path('<int:pk>/approve/', views.user_approve_view, name='user_approve'),

@@ -1,0 +1,126 @@
+{% extends 'base.html' %}
+
+{% block title %}Détails du Progrès - GymMS{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2>Détails du Suivi de Progrès</h2>
+        <div>
+            {% if is_client %}
+                <a href="{% url 'client_progres_list' %}" class="btn btn-secondary">
+                    <i class="fas fa-arrow-left"></i> Retour
+                </a>
+            {% elif is_admin %}
+                <a href="{% url 'admin_progres_list' %}" class="btn btn-secondary">
+                    <i class="fas fa-arrow-left"></i> Retour
+                </a>
+            {% else %}
+                <a href="{% url 'progres_list' %}" class="btn btn-secondary">
+                    <i class="fas fa-arrow-left"></i> Retour
+                </a>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6 mb-4">
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0"><i class="fas fa-info-circle"></i> Informations Générales</h5>
+                </div>
+                <div class="card-body">
+                    <table class="table table-borderless">
+                        <tr>
+                            <th width="40%">Client:</th>
+                            <td>{{ progres.client.nom }}</td>
+                        </tr>
+                        <tr>
+                            <th>Coach:</th>
+                            <td>{{ progres.coach.nom }}</td>
+                        </tr>
+                        <tr>
+                            <th>Date:</th>
+                            <td>{{ progres.date|date:"d/m/Y" }}</td>
+                        </tr>
+                        <tr>
+                            <th>Poids:</th>
+                            <td>
+                                {% if progres.poids %}
+                                    <strong>{{ progres.poids }} kg</strong>
+                                {% else %}
+                                    <span class="text-muted">Non renseigné</span>
+                                {% endif %}
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 mb-4">
+            <div class="card">
+                <div class="card-header bg-success text-white">
+                    <h5 class="mb-0"><i class="fas fa-ruler"></i> Mesures Corporelles</h5>
+                </div>
+                <div class="card-body">
+                    {% if progres.mesures %}
+                        <table class="table table-striped">
+                            {% for key, value in progres.mesures.items %}
+                            <tr>
+                                <th width="50%">{{ key|title }}:</th>
+                                <td>
+                                    <strong>{{ value }}</strong>
+                                    {% if key == 'masse_grasse' or key == 'body_fat' %}
+                                        %
+                                    {% else %}
+                                        cm
+                                    {% endif %}
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </table>
+                    {% else %}
+                        <div class="alert alert-info mb-0">
+                            <i class="fas fa-info-circle"></i>
+                            Aucune mesure corporelle enregistrée.
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header bg-warning text-dark">
+                    <h5 class="mb-0"><i class="fas fa-clipboard"></i> Notes du Coach</h5>
+                </div>
+                <div class="card-body">
+                    {% if progres.notes %}
+                        <p class="mb-0">{{ progres.notes|linebreaks }}</p>
+                    {% else %}
+                        <p class="text-muted mb-0">Aucune note disponible.</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% if not is_client and not is_admin %}
+    <div class="row mt-4">
+        <div class="col-12">
+            <div class="d-flex gap-2">
+                <a href="{% url 'progres_update' progres.pk %}" class="btn btn-primary">
+                    <i class="fas fa-edit"></i> Modifier
+                </a>
+                <a href="{% url 'progres_delete' progres.pk %}" class="btn btn-danger">
+                    <i class="fas fa-trash"></i> Supprimer
+                </a>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}
